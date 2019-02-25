@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://parkinglot.com/vehicles"
+           xmlns:tns="http://parkinglot.com/vehicles" elementFormDefault="qualified">
+
+    <xs:simpleType name="VehicleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MOTORBIKE"/>
+            <xs:enumeration value="CAR"/>
+            <xs:enumeration value="BUS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="GetVehicleDetailsByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "vehicleId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetVehicleDetailsByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "VehicleDetails" type="tns:VehicleDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VehicleDetails">
+        <xs:sequence>
+            <xs:element name="vehicleId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+            <xs:element name="vehicleType" type="tns:VehicleType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GetVehicleDetailsByLicenseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "license" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetVehicleDetailsByLicenseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "VehicleDetailsByLicense" type="tns:VehicleDetailsByLicense"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VehicleDetailsByLicense">
+        <xs:sequence>
+            <xs:element name="vehicleId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+            <xs:element name="vehicleType" type="tns:VehicleType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getAllVehiclesRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllVehiclesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehicleDetails" type="tns:VehicleDetails" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="addVehicleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehicleId" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+                <xs:element name="color" type="xs:string"/>
+                <xs:element name="vehicleType" type="tns:VehicleType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addVehicleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="vehicleDetails" type="tns:VehicleDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVehicleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehicleDetails" type="tns:VehicleDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVehicleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteVehicleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteVehicleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

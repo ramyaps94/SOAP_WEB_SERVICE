@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GetVehicleDetailsResponse xmlns="http://parkinglot.com/vehicles"
+                          xsi:schemaLocation="http://parkinglot.com/vehicles vehicle-details.xsd"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <VehicleDetails>
+        <vehicleId>123</vehicleId>
+        <name>bmw</name>
+        <vehicleLicenseNumber>KA01M9983</vehicleLicenseNumber>
+        <color>white</color>
+    </VehicleDetails>
+</GetVehicleDetailsResponse>

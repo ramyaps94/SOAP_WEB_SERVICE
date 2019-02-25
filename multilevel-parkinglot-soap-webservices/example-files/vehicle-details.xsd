@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://parkinglot.com/vehicles"
+           xmlns:tns="http://parkinglot.com/vehicles" elementFormDefault="qualified">
+
+    <xs:element name="GetVehicleDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "vehicleId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetVehicleDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "VehicleDetails" type="tns:VehicleDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VehicleDetails">
+        <xs:sequence>
+            <xs:element name="vehicleId" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GetVehicleDetailsByLicenseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "license" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetVehicleDetailsByLicenseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name= "VehicleDetailsByLicense" type="tns:VehicleDetailsByLicense"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VehicleDetailsByLicense">
+        <xs:sequence>
+            <xs:element name="vehicleId" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="vehicleLicenseNumber" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
